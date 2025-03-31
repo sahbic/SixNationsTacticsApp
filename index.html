@@ -3,159 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Six Nations 2025 Tactical Cards</title>
+    <title>Six Nations 2025 Tactical Deep Dive</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header class="app-header">
-            <h1>Six Nations 2025 - Tactical Cards</h1>
+            <h1>Six Nations 2025 - Tactical Deep Dive</h1>
         </header>
 
-        <div class="team-cards-container" id="team-cards-container">
-            <!-- Team cards will be generated/populated here by script.js -->
-            <!-- Example structure for one card (will be repeated): -->
-            <div class="team-card" data-team="france">
+        <nav class="team-selector-band">
+             <!-- Buttons similar to original sidebar but horizontal -->
+            <button class="team-button active" data-team="france">
+                <img src="img/france-logo.png" alt="France Logo"> France
+            </button>
+            <button class="team-button" data-team="england">
+                <img src="img/england-logo.svg" alt="England Logo"> England
+            </button>
+            <button class="team-button" data-team="ireland">
+                <img src="img/ireland-logo.svg" alt="Ireland Logo"> Ireland
+            </button>
+            <button class="team-button" data-team="scotland">
+                <img src="img/scotland-logo.svg" alt="Scotland Logo"> Scotland
+            </button>
+            <button class="team-button" data-team="italy">
+                <img src="img/italy-logo.png" alt="Italy Logo"> Italy
+            </button>
+            <button class="team-button" data-team="wales">
+                <img src="img/wales-logo.png" alt="Wales Logo"> Wales
+            </button>
+        </nav>
+
+        <main class="content-area" id="content-area">
+            <!-- Content will be dynamically populated here -->
+
+            <!-- 1. Summary Card (Top, Wide) -->
+            <div class="content-card summary-card">
                 <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
+                    <img id="team-logo-display" src="" alt="Team Logo">
+                    <h2 id="team-name-display">Loading...</h2>
                 </div>
-                 <div class="card-section performance">
+                <div class="card-section performance">
                     <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
+                    <p id="performance-summary">Loading...</p>
                  </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
+            </div>
+
+            <!-- 2. Strengths & Weaknesses Container (Middle Row) -->
+            <div class="sw-container">
+                <!-- Strengths Card (Left) -->
+                <div class="content-card strengths-card">
+                    <div class="card-section strengths">
+                        <h3>Strengths 💪</h3>
+                        <ul id="strengths-list"><li>Loading...</li></ul>
+                    </div>
                 </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
+                <!-- Weaknesses Card (Right) -->
+                <div class="content-card weaknesses-card">
+                    <div class="card-section weaknesses">
+                        <h3>Weaknesses 📉</h3>
+                        <ul id="weaknesses-list"><li>Loading...</li></ul>
+                    </div>
                 </div>
             </div>
 
-             <div class="team-card" data-team="england">
-                <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
-                </div>
-                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
-                 </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
+            <!-- 3. Opportunities Card (Bottom, Wide, Highlighted) -->
+            <div class="content-card opportunities-card highlighted">
+                <div class="card-section opportunities">
                     <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
+                    <ul id="opportunities-list"><li>Loading...</li></ul>
                 </div>
             </div>
 
-             <div class="team-card" data-team="ireland">
-                <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
-                </div>
-                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
-                 </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
-                </div>
-            </div>
-
-             <div class="team-card" data-team="scotland">
-                <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
-                </div>
-                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
-                 </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
-                </div>
-            </div>
-
-             <div class="team-card" data-team="italy">
-                <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
-                </div>
-                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
-                 </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
-                </div>
-            </div>
-
-             <div class="team-card" data-team="wales">
-                <div class="card-header">
-                    <img class="card-logo" src="" alt="Team Logo">
-                    <h2 class="card-team-name">Loading...</h2>
-                </div>
-                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p class="card-performance">Loading...</p>
-                 </div>
-                <div class="card-section strengths">
-                    <h3>Strengths 💪</h3>
-                    <ul class="card-strengths-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section weaknesses">
-                    <h3>Weaknesses 📉</h3>
-                    <ul class="card-weaknesses-list"><li>Loading...</li></ul>
-                </div>
-                <div class="card-section opportunities highlighted">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul class="card-opportunities-list"><li>Loading...</li></ul>
-                </div>
-            </div>
-            <!-- Repeat card structure for other teams: england, ireland, scotland, italy, wales -->
-
-        </div>
+        </main>
     </div>
 
     <script src="data.js"></script>  <!-- Load the data first -->

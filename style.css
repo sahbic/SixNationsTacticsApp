@@ -1,11 +1,11 @@
 :root {
     --bg-color: #1a1f24;
     --text-color: #e0e0e0;
-    --primary-color: #0d6efd; /* Slightly different blue */
+    --primary-color: #0d6efd;
     --secondary-color: #2a313a;
-    --card-bg: #212529; /* Darker card background */
+    --card-bg: #212529;
     --border-color: #444;
-    --highlight-bg: rgba(13, 110, 253, 0.1); /* Transparent primary color */
+    --highlight-bg: rgba(13, 110, 253, 0.1);
     --highlight-border: var(--primary-color);
     --strength-color: #198754; /* Green */
     --weakness-color: #dc3545; /* Red */
@@ -29,14 +29,14 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 95%; /* Use more screen width */
+    max-width: 1200px; /* Adjust max-width as needed */
     margin: 20px auto;
-    padding: 20px; /* Padding for the overall container */
+    padding: 20px;
 }
 
 .app-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
@@ -45,162 +45,232 @@ body {
     font-weight: 600;
 }
 
-/* Grid Container for Team Cards */
-.team-cards-container {
-    display: grid;
-    /* Responsive grid: min 350px width, max 1fr */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px; /* Spacing between cards */
+/* Team Selector Menu Band */
+.team-selector-band {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 10px; /* Spacing between buttons */
+    padding: 15px 10px;
+    margin-bottom: 30px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Individual Team Card Styling */
-.team-card {
+.team-button {
     background-color: var(--card-bg);
-    border-radius: 10px;
     border: 1px solid var(--border-color);
-    overflow: hidden; /* Ensure contents respect border radius */
-    transition: transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease,
-                border-color var(--transition-speed) ease;
-    display: flex; /* Use flexbox for vertical layout */
-    flex-direction: column; /* Stack sections vertically */
+    color: var(--text-color);
+    padding: 8px 15px; /* Adjust padding */
+    cursor: pointer;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: background-color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking when wrapping */
 }
 
-.team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+.team-button img {
+    width: 20px; /* Smaller logo in button */
+    height: 20px;
+    margin-right: 8px;
+    object-fit: contain;
 }
 
-/* --- Card Header --- */
-.card-header {
+.team-button:hover {
+    background-color: #3a414a;
+    border-color: #555;
+    transform: translateY(-2px);
+}
+
+.team-button.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+    transform: translateY(0); /* Reset hover transform */
+}
+
+/* Main Content Area */
+.content-area {
+    padding-top: 10px; /* Add some space below menu band */
+    opacity: 1;
+    transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.content-area.loading {
+    opacity: 0;
+}
+
+/* General Card Styling */
+.content-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 25px; /* Space between card rows */
+    overflow: hidden; /* Contain content */
+}
+
+/* --- 1. Summary Card --- */
+.summary-card .card-header {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    background-color: var(--secondary-color); /* Header background */
+    background-color: var(--secondary-color);
     border-bottom: 1px solid var(--border-color);
 }
 
-.card-logo {
-    width: 40px;
-    height: 40px;
+.summary-card .card-header img { /* Style for logo in summary */
+    width: 45px;
+    height: 45px;
     margin-right: 15px;
     object-fit: contain;
-    flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
-.card-team-name {
-    font-size: 1.4rem; /* Slightly smaller */
+.summary-card .card-header h2 { /* Style for name in summary */
+    font-size: 1.6rem;
     font-weight: 600;
     color: #fff;
 }
 
-/* --- Card Sections --- */
-.card-section {
-    padding: 15px 20px;
-     border-bottom: 1px solid var(--border-color); /* Separator */
-}
-.team-card > .card-section:last-child {
-    border-bottom: none; /* No border on the last section */
+.summary-card .card-section { /* Style for performance section */
+     padding: 15px 20px;
 }
 
-
-.card-section h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
+.summary-card .card-section h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
-/* Color coding section headers */
-.performance h3 { color: var(--primary-color); }
-.strengths h3 { color: var(--strength-color); }
-.weaknesses h3 { color: var(--weakness-color); }
-.opportunities h3 { color: #fff; } /* White for highlighted section title */
-
-.card-section p { /* Style for performance summary */
+.summary-card .card-section p {
     font-size: 0.95rem;
-    margin-bottom: 0; /* Remove default margin if only text */
 }
 
-.card-section ul {
+
+/* --- 2. Strengths & Weaknesses Container --- */
+.sw-container {
+    display: flex;
+    gap: 25px; /* Space between S/W cards */
+    margin-bottom: 25px;
+}
+
+.strengths-card,
+.weaknesses-card {
+    flex: 1; /* Make cards share space equally */
+    min-width: 0; /* Allow flex items to shrink */
+    /* Inherit .content-card styles */
+    margin-bottom: 0; /* Remove bottom margin as .sw-container handles spacing */
+}
+
+/* Specific styling for S/W sections */
+.strengths-card .card-section,
+.weaknesses-card .card-section {
+     padding: 15px 20px;
+}
+
+.strengths-card h3 { color: var(--strength-color); }
+.weaknesses-card h3 { color: var(--weakness-color); }
+
+.strengths-card h3,
+.weaknesses-card h3 {
+     font-size: 1.2rem;
+     margin-bottom: 12px;
+}
+
+.strengths-card ul,
+.weaknesses-card ul {
     list-style: none;
     padding-left: 0;
-    font-size: 0.9rem; /* Slightly smaller list text */
+    font-size: 0.9rem;
 }
 
-.card-section li {
-    padding: 6px 0; /* Less vertical padding */
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1); /* Subtle separator */
+.strengths-card li,
+.weaknesses-card li {
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
     opacity: 0; /* For animation */
     animation: fadeInItem 0.5s ease forwards;
      animation-delay: calc(0.05s * var(--i)); /* Stagger animation */
 }
-.card-section li:last-child {
+.strengths-card li:last-child,
+.weaknesses-card li:last-child {
     border-bottom: none;
 }
 
-/* Specific list styles (optional) */
-/* You could add icons via ::before if desired */
-/* .strengths li::before { content: '✅ '; color: var(--strength-color); } */
-/* .weaknesses li::before { content: '❌ '; color: var(--weakness-color); } */
-
-/* --- Highlighted Opportunities Section --- */
-.card-section.highlighted {
-    background-color: var(--highlight-bg);
-    border-top: 2px solid var(--highlight-border); /* Stronger top border */
-    margin: 0; /* Remove margin if needed */
-    border-bottom: none; /* Ensure no bottom border if last section */
-    border-radius: 0 0 10px 10px; /* Round bottom corners if it's the last section */
+/* --- 3. Opportunities Card (Highlighted) --- */
+.opportunities-card {
+     /* Inherit .content-card styles */
+    border-top: 3px solid var(--highlight-border); /* Highlight top border */
 }
 
-.card-section.highlighted h3 {
-    color: #fff; /* Make title stand out */
-    /* border-left: 4px solid var(--highlight-border); */
-    /* padding-left: 10px; */
+.opportunities-card.highlighted {
+    background-color: var(--highlight-bg); /* Subtle highlight background */
 }
 
-.card-section.highlighted ul {
-     font-size: 0.9rem;
+.opportunities-card .card-section {
+    padding: 15px 20px;
 }
 
-.card-section.highlighted li {
-    border-bottom-color: rgba(13, 110, 253, 0.2); /* Match highlight color */
-    /* color: #ade; Optional lighter text */
+.opportunities-card h3 {
+    color: var(--opportunity-color); /* Yellow title */
+    font-size: 1.3rem; /* Slightly larger title */
+    margin-bottom: 12px;
 }
-.card-section.highlighted li:last-child {
+
+.opportunities-card ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.95rem; /* Slightly larger text */
+}
+
+.opportunities-card li {
+    padding: 8px 0; /* More padding */
+    border-bottom: 1px dashed rgba(255, 193, 7, 0.3); /* Yellowish dash */
+    opacity: 0; /* For animation */
+    animation: fadeInItem 0.5s ease forwards;
+     animation-delay: calc(0.05s * var(--i)); /* Stagger animation */
+}
+.opportunities-card li:last-child {
     border-bottom: none;
-}
-
-
-/* Active Card State (Optional visual feedback on click) */
-.team-card.active {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
 }
 
 
 /* Animations (Keep as before) */
-@keyframes fadeInItem {
-    to {
-        opacity: 1;
+@keyframes fadeInItem { to { opacity: 1; } }
+@keyframes fadeInContent { from { opacity: 0; } to { opacity: 1; } }
+
+.content-area { animation: fadeInContent 0.4s ease-out; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .sw-container {
+        flex-direction: column; /* Stack S/W cards */
+        gap: 25px; /* Keep gap when stacked */
+    }
+    .strengths-card,
+    .weaknesses-card {
+        margin-bottom: 0; /* Reset margin */
     }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .app-header h1 { font-size: 1.8rem; }
-    .team-cards-container {
-        grid-template-columns: 1fr; /* Stack cards on smaller screens */
-        gap: 20px;
-    }
-    .card-team-name { font-size: 1.2rem; }
-     .card-section h3 { font-size: 1rem; }
-     .card-section ul, .card-section p { font-size: 0.85rem; }
+    .team-selector-band { justify-content: flex-start; } /* Align left on smaller screens */
+    .summary-card .card-header h2 { font-size: 1.4rem; }
+    .summary-card .card-header img { width: 40px; height: 40px; }
+    .content-card h3 { font-size: 1.1rem; }
+    .content-card ul, .content-card p { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
-     .app-header h1 { font-size: 1.5rem; }
-     .card-header { padding: 12px 15px;}
-     .card-logo { width: 30px; height: 30px; margin-right: 10px;}
-     .card-section { padding: 12px 15px;}
+    .app-header h1 { font-size: 1.5rem; }
+    .team-button { font-size: 0.9rem; padding: 6px 10px; }
+    .team-button img { width: 18px; height: 18px; }
+     .content-card .card-section { padding: 12px 15px; }
+     .summary-card .card-header { padding: 12px 15px; }
 }
