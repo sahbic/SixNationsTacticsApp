@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,35 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="app-container">
         <header class="app-header">
-            <h1>Six Nations 2025 - Tactical Deep Dive</h1>
+            <h1 id="main-title">Six Nations 2025 - Tactical Deep Dive</h1>
+            <button id="translate-button" class="translate-button">
+                <span class="translate-text">🌐 Translate to French</span>
+            </button>
         </header>
 
         <nav class="team-selector-band">
-             <!-- Buttons similar to original sidebar but horizontal -->
+            <!-- Buttons similar to original sidebar but horizontal -->
             <button class="team-button active" data-team="france">
-                <img src="img/france-logo.png" alt="France Logo"> France
+                <img src="img/france-logo.png" alt="France Logo"> <span class="team-name">France</span>
             </button>
             <button class="team-button" data-team="england">
-                <img src="img/england-logo.svg" alt="England Logo"> England
+                <img src="img/england-logo.svg" alt="England Logo"> <span class="team-name">England</span>
             </button>
             <button class="team-button" data-team="ireland">
-                <img src="img/ireland-logo.svg" alt="Ireland Logo"> Ireland
+                <img src="img/ireland-logo.svg" alt="Ireland Logo"> <span class="team-name">Ireland</span>
             </button>
             <button class="team-button" data-team="scotland">
-                <img src="img/scotland-logo.svg" alt="Scotland Logo"> Scotland
+                <img src="img/scotland-logo.svg" alt="Scotland Logo"> <span class="team-name">Scotland</span>
             </button>
             <button class="team-button" data-team="italy">
-                <img src="img/italy-logo.png" alt="Italy Logo"> Italy
+                <img src="img/italy-logo.png" alt="Italy Logo"> <span class="team-name">Italy</span>
             </button>
             <button class="team-button" data-team="wales">
-                <img src="img/wales-logo.png" alt="Wales Logo"> Wales
+                <img src="img/wales-logo.png" alt="Wales Logo"> <span class="team-name">Wales</span>
             </button>
         </nav>
 
@@ -45,9 +50,27 @@
                     <h2 id="team-name-display">Loading...</h2>
                 </div>
                 <div class="card-section performance">
-                    <h3>Performance & Stats 📊</h3>
-                    <p id="performance-summary">Loading...</p>
-                 </div>
+                    <h3 id="performance-title">Performance & Stats 📊</h3>
+                    <div class="performance-grid">
+                        <div class="stat-item">
+                            <div class="stat-label" id="position-label">Position</div>
+                            <div class="stat-value" id="position-stat">Loading...</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label" id="record-label">Record</div>
+                            <div class="stat-value" id="record-stat">Loading...</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label" id="points-label">Points</div>
+                            <div class="stat-value" id="points-stat">Loading...</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label" id="pd-label">Point Differential</div>
+                            <div class="stat-value" id="pd-stat">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="performance-text" id="performance-summary">Loading...</div>
+                </div>
             </div>
 
             <!-- 2. Strengths & Weaknesses Container (Middle Row) -->
@@ -55,31 +78,38 @@
                 <!-- Strengths Card (Left) -->
                 <div class="content-card strengths-card">
                     <div class="card-section strengths">
-                        <h3>Strengths 💪</h3>
-                        <ul id="strengths-list"><li>Loading...</li></ul>
+                        <h3 id="strengths-title">Strengths 💪</h3>
+                        <ul id="strengths-list">
+                            <li>Loading...</li>
+                        </ul>
                     </div>
                 </div>
                 <!-- Weaknesses Card (Right) -->
                 <div class="content-card weaknesses-card">
                     <div class="card-section weaknesses">
-                        <h3>Weaknesses 📉</h3>
-                        <ul id="weaknesses-list"><li>Loading...</li></ul>
+                        <h3 id="weaknesses-title">Weaknesses 📉</h3>
+                        <ul id="weaknesses-list">
+                            <li>Loading...</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Opportunities Card (Bottom, Wide, Highlighted) -->
+            <!-- 3. Opportunities Card (Bottom, Wide) -->
             <div class="content-card opportunities-card highlighted">
                 <div class="card-section opportunities">
-                    <h3>How to Beat Them 🎯</h3>
-                    <ul id="opportunities-list"><li>Loading...</li></ul>
+                    <h3 id="opportunities-title">How to Beat Them 🎯</h3>
+                    <ul id="opportunities-list">
+                        <li>Loading...</li>
+                    </ul>
                 </div>
             </div>
 
         </main>
     </div>
 
-    <script src="data.js"></script>  <!-- Load the data first -->
+    <script src="data.js"></script> <!-- Load the data first -->
     <script src="script.js"></script> <!-- Load the script that uses the data -->
 </body>
+
 </html>
