@@ -481,3 +481,14 @@ body {
         padding: 10px;
     }
 }
+
+/* === Footer Styling === */
+.page-footer {
+    text-align: center; /* Center the text */
+    padding: 15px 0;    /* Add some space above and below */
+    margin-top: 30px;   /* Add space between main content and footer */
+    font-size: 0.8em;   /* Make text slightly smaller */
+    color: #666;       /* Use a gray color */
+    border-top: 1px solid #eee; /* Optional: Add a subtle top border for separation */
+    width: 100%;       /* Ensure it takes full width if needed */
+}
